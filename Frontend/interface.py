@@ -116,7 +116,7 @@ Twoim zadaniem jest opisać dokładnie to, co widzisz na obrazku.
 Spróbuj mówić pełnymi zdaniami i uwzględnij wszystkie elementy sceny.
 """)
 
-st.image("image.png", caption="Opisz ten obrazek", use_container_width=True)
+st.image("cookie_theft.png", caption="Opisz ten obrazek", use_container_width=True)
 
 # =========================
 # INPUT
