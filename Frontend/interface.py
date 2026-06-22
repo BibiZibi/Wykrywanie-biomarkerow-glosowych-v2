@@ -1,14 +1,21 @@
 import streamlit as st
 import joblib
 import tempfile
+import os
 
 from main import predict_from_audio
 
 # =========================
 # MODEL
 # =========================
-model = joblib.load("model.pkl")
-scaler = joblib.load("scaler.pkl")
+
+BASE_DIR = os.path.dirname(__file__)
+
+model_path = os.path.join(BASE_DIR, "model.pkl")
+scaler_path = os.path.join(BASE_DIR, "scaler.pkl")
+
+model = joblib.load(model_path)
+scaler = joblib.load(scaler_path)
 
 # =========================
 # OPISY CECH
