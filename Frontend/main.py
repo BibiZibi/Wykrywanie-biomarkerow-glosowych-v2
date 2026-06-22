@@ -59,8 +59,14 @@ def predict_from_audio(filepath, model, scaler):
     proba = model.predict_proba(X_scaled)[0][1]
     pred = model.predict(X_scaled)[0]
 
-    explainer = shap.TreeExplainer(model)
-    shap_values = explainer.shap_values(X_scaled)
+    
+    try:
+        explainer = shap.TreeExplainer(model)
+        shap_values = explainer.shap_values(X_scaled)
+        shap_vals = shap_values[0]
+    except:
+        shap_vals = np.zeros(X_scaled.shape[1])
+
 
     shap_vals = shap_values[0]
     feature_names = X.columns
