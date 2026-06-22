@@ -56,10 +56,10 @@ def predict_from_audio(filepath, model, scaler):
     X = pd.DataFrame([features])
     X_scaled = scaler.transform(X)
 
+    
     proba = model.predict_proba(X_scaled)[0][1]
     pred = model.predict(X_scaled)[0]
 
-    
     try:
         explainer = shap.TreeExplainer(model)
         shap_values = explainer.shap_values(X_scaled)
@@ -67,8 +67,6 @@ def predict_from_audio(filepath, model, scaler):
     except:
         shap_vals = np.zeros(X_scaled.shape[1])
 
-
-    shap_vals = shap_values[0]
     feature_names = X.columns
 
     idxs = np.argsort(np.abs(shap_vals))[::-1][:5]
